@@ -16,7 +16,7 @@ data.plot.scatter('population', 'profit')
 plt.show()
 print(data)
 # iloc方法是通过索引行、列的索引位置[index, columns]来寻找值
-# 将列表分开，前3列为第一部分训练集，最后一列为测试集
+# 将列表分开，前3列为第一部分，最后一列第二部分
 x = data.iloc[:, 0:-1]
 x.head()
 # values()函数返回一个字典中所有的值。
