@@ -82,7 +82,7 @@ print(y.shape)
 from scipy.optimize import minimize
 
 
-# 一对所有”（one-vs-all）分类器的训练
+# 一对所有（one-vs-all）分类器的训练
 def one_vs_all(x, y, lamda, k):  # k为标签个数
     """
 
