@@ -26,7 +26,8 @@ def one_hot_code(raw_y):
     """
     # 初始化空列表
     result = []
-    for i in raw_y:
+    for i in raw_y:   # i的范围是1-10
+        # 创建一个大小为 10 的零向量
         y_temp = np.zeros(10)
         y_temp[i - 1] = 1
         result.append(y_temp)
@@ -42,8 +43,6 @@ theta = sio.loadmat('E:/BaiduNetdiskDownload/data_sets/ex3weights.mat')
 theta1 = theta['Theta1']
 # print(theta1.shape)        # (25, 401)
 theta2 = theta['Theta2']
-
-
 # print(theta2.shape)       # (10, 26)
 
 # 序列化权重参数
@@ -140,7 +139,8 @@ def gradient(theta_serialize, x, y):
     theta1, theta2 = deserialize(theta_serialize)
     a1, z2, a2, z3, h = feed_spread(theta_serialize, x)
     d3 = h - y  # 计算输出层的误差
-    d2 = d3 @ theta2[:, 1:] * sigmoid_gradient(z2)  # 计算隐藏层的误差（梯度）
+    # theta2[:, 1:]代表隐藏层权重矩阵去掉偏置列。
+    d2 = d3 @ theta2[:, 1:] * sigmoid_gradient(z2)  # 计算隐藏层的误差
     D2 = (d3.T @ a2) / len(x)  # 计算对 Theta2 的梯度，表示输出层权重的变化率
     D1 = (d2.T @ a1) / len(x)  # 计算对 Theta1 的梯度，表示隐层权重的变化率
     return serialize(D1, D2)  # 返回梯度序列化结果
@@ -168,7 +168,7 @@ def training(x, y):
                    args=(x, y, lamda),
                    method='TNC',
                    jac=reg_gradient,
-                   options={'maxfun': 300})
+                   options={'maxfun': 300})   # 设置最大迭代次数300
     return res
 
 
