@@ -3,7 +3,7 @@ import numpy as py
 import pandas as pd
 import matplotlib.pyplot as plt
 import scipy.io as sio
-
+                                          # 方差和偏差
 path = "E:/BaiduNetdiskDownload/data_sets/ex5data1.mat"
 data = sio.loadmat(path)
 # print(data)
