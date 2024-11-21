@@ -15,19 +15,22 @@ y = data['y']
 print(x.shape)  # (863, 2)
 print(y.shape)  # (863, 1)
 
+
 # 数据可视化
 def data_plot():
     plt.scatter(x[:, 0], x[:, 1], c=y.flatten(), cmap='jet')
     plt.xlabel('x1')
     plt.ylabel('y1')
 
+
 data_plot()
 plt.show()
 
-svc1 = SVC(C=1,kernel='rbf',gamma=1)
-svc1.fit(x,y.flatten())
+svc1 = SVC(C=1, kernel='rbf', gamma=1)
+svc1.fit(x, y.flatten())
 
 print(svc1.score(x, y.flatten()))
+
 
 def plot_boundary(model):
     x_min, x_max = 0, 1.2
@@ -37,13 +40,13 @@ def plot_boundary(model):
     z = z.reshape(xx.shape)
     plt.contour(xx, yy, z, levels=[0.5], colors='red')
 
+
 plot_boundary(svc1)
 data_plot()
 plt.show()
 
-
-svc2 = SVC(C=1,kernel='rbf',gamma=100)
-svc2.fit(x,y.flatten())
+svc2 = SVC(C=1, kernel='rbf', gamma=100)
+svc2.fit(x, y.flatten())
 plot_boundary(svc2)
 data_plot()
 plt.show()
