@@ -4,7 +4,6 @@ import matplotlib.pyplot as plt
 
 path = "E:/BaiduNetdiskDownload/data_sets/ex1data1.txt"
 data = pd.read_csv(path, names=['population', 'profit'])
-
 print(data)
 
 # h(x)=b0+b1x1+b2x2+......所以给特征值加上一列全为1的列，进行矩阵运算
