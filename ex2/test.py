@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# 线性可分
+                              # 线性可分
 # 要求：根据学生两门课的成绩，判断能否会录取
 path = "E:/BaiduNetdiskDownload/data_sets/ex2data1.txt"
 data = pd.read_csv(path, names=['grade1', 'grade2', 'if_accept'])
