@@ -112,3 +112,4 @@ ax.set(xlabel='grade1',
        ylabel='grade2')
 ax.plot(x, f, c='g')
 plt.show()
+
