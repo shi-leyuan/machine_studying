@@ -8,7 +8,7 @@ import scipy.io as sio
 
 path = "E:/BaiduNetdiskDownload/data_sets/ex6data2.mat"
 data = sio.loadmat(path)
-# print(data)
+print(data)
 print(data.keys())
 x = data['X']
 y = data['y']
