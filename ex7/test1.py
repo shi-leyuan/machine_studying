@@ -28,10 +28,11 @@ def find_class(x, centros):
         # x[i]为一维数组，centros为二维，但是最终结果会自动变维度
         # np.linalg.norm: 计算欧氏距离，用于度量每个数据点与每个聚类中心的距离。
         distance = np.linalg.norm((x[i] - centros), axis=1)
-        id_i = np.argmin(distance) #  返回距离最小值的索引，即找到最近的聚类中心。
+        id_i = np.argmin(distance)  # 返回距离最小值的索引，即找到最近的聚类中心。
         idx.append(id_i)
 
     return np.array(idx)
+
 
 # 定义三个初始的聚类中心，即坐标
 centros = np.array([[3, 3], [6, 2], [8, 5]])
@@ -51,7 +52,7 @@ def compute_centros(x, idx, k):
     :return:将centros列表转换为 NumPy 数组并返回
     """
     centros = []
-    for i in range(k): # 遍历每个聚类
+    for i in range(k):  # 遍历每个聚类
         # 筛选属于当前类别 i 的数据点，x[idx == i] 会根据布尔数组筛选出属于聚类 i 的所有数据点
         points_in_cluster = x[idx == i]
         if len(points_in_cluster) == 0:
@@ -72,9 +73,9 @@ compute_centros(x, idx, k=3)
 # 运行
 def run_kmeans(x, centros, iters):
     k = len(centros)  # 聚类的数量
-    centros_all = []# 存储每次迭代的聚类中心
+    centros_all = []  # 存储每次迭代的聚类中心
     centros_all.append(centros)
-    centros_i = centros# 当前的聚类中心初始化为初始值
+    centros_i = centros  # 当前的聚类中心初始化为初始值
     for i in range(iters):
         idx = find_class(x, centros_i)
         centros_i = compute_centros(x, idx, k)
